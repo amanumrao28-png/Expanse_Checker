@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useExpenses } from '../context/ExpenseContext';
-import { LogIn, UserPlus, X, Mail, Lock, User, Sparkles, Database, CheckCircle2, AlertCircle, Eye, EyeOff, KeyRound } from 'lucide-react';
+import { LogIn, UserPlus, X, Mail, Lock, User, Sparkles, CheckCircle2, AlertCircle, Eye, EyeOff, KeyRound } from 'lucide-react';
 import Button from './Button';
 
 const AuthModal = () => {
@@ -42,12 +42,6 @@ const AuthModal = () => {
     }
   };
 
-  const handleFillDemo = () => {
-    setEmail('teststudent@campus.edu');
-    setPassword('Password@123');
-    setShowPassword(true);
-  };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
       <div 
@@ -63,13 +57,8 @@ const AuthModal = () => {
           <X className="w-5 h-5" />
         </button>
 
-        {/* Header with Supabase Badge */}
+        {/* Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-            <Database className="w-3.5 h-3.5" />
-            <span>Supabase Cloud PostgreSQL</span>
-          </div>
-
           <h2 className="text-2xl font-bold text-white tracking-tight">
             {authMode === 'login' && 'Sign In to Your Account'}
             {authMode === 'register' && 'Create Student Account'}
@@ -237,21 +226,10 @@ const AuthModal = () => {
             className="w-full py-2.5 font-medium mt-2"
             isLoading={loading}
           >
-            {authMode === 'login' && 'Sign In to Supabase'}
+            {authMode === 'login' && 'Sign In'}
             {authMode === 'register' && 'Create Account'}
             {authMode === 'reset' && 'Update Password & Sign In'}
           </Button>
-
-          {/* Quick Demo fill for convenience */}
-          <div className="pt-2 text-center">
-            <button
-              type="button"
-              onClick={handleFillDemo}
-              className="text-xs text-blue-400 hover:text-blue-300 hover:underline transition-colors"
-            >
-              Fill verified account (teststudent@campus.edu)
-            </button>
-          </div>
         </form>
       </div>
     </div>
